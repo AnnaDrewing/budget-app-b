@@ -16,6 +16,7 @@
     "@mui/material": "^5.13.4",
     "@mui/x-date-pickers": "^6.7.0",
     "dayjs": "^1.11.8",
+    "js-file-download": "^0.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",

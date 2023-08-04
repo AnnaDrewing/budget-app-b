@@ -49,7 +49,7 @@ export default function FontFamily({ updateFont, userFont }) {
       >
         <option value="Arial">Arial</option>
         <option value="Caveat">Caveat</option>
-        <option valuQuicksande="Chakra Petch">Chakra Petch</option>
+        <option value="Chakra Petch">Chakra Petch</option>
         <option value="Cinzel">Cinzel</option>
         <option value="Comfortaa">Comfortaa</option>
         <option value="Figtree">Figtree</option>

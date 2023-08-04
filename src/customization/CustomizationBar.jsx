@@ -18,12 +18,20 @@ export default function CustomizationBar({
   userCurrency,
   updateTheme,
   userTheme,
+  updateFontFamilyClicks,
+  updateFontSizeClicks,
+  updateThemeClicks,
 }) {
   const [showingCurrency, setShowingCurrency] = useState(false);
   const [showingFontFamily, setShowingFontFamily] = useState(false);
   const [showingFontSize, setShowingFontSize] = useState(false);
   const [showingTheme, setShowingTheme] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+
+  // For logging purposes
+  const [fontFamilyClicks, setFontFamilyClicks] = useState(0);
+  const [fontSizeClicks, setFontSizeClicks] = useState(0);
+  const [themeClicks, setThemeClicks] = useState(0);
 
   const toggleCurrencySetting = () => {
     if (isSettingOpen) {
@@ -61,6 +69,23 @@ export default function CustomizationBar({
     setShowingTheme(!showingTheme);
     setIsSettingOpen(!showingTheme);
   };
+
+  // For logging purposes
+  const addFontFamilyClick = () => {
+    setFontFamilyClicks(fontFamilyClicks + 1);
+    updateFontFamilyClicks(fontFamilyClicks);
+  };
+
+  const addFontSizeClicks = () => {
+    setFontSizeClicks(fontSizeClicks + 1);
+    updateFontSizeClicks(fontSizeClicks);
+  };
+
+  const addThemeClicks = () => {
+    setThemeClicks(themeClicks + 1);
+    updateThemeClicks(themeClicks);
+  };
+
   return (
     <div className="CustomizationBar">
       <div className="CustomizationNav">
@@ -121,6 +146,7 @@ export default function CustomizationBar({
         <div
           className="settingBlock"
           style={{ backgroundColor: userTheme.palette.tab2 }}
+          onClick={addFontFamilyClick}
         >
           <FontFamily
             className="settingForm"
@@ -133,6 +159,7 @@ export default function CustomizationBar({
         <div
           className="settingBlock"
           style={{ backgroundColor: userTheme.palette.tab3 }}
+          onClick={addFontSizeClicks}
         >
           <FontSize
             updateFontSize={updateFontSize}
@@ -145,6 +172,7 @@ export default function CustomizationBar({
         <div
           className="settingBlock"
           style={{ backgroundColor: userTheme.palette.tab4 }}
+          onClick={addThemeClicks}
         >
           <Theme updateTheme={updateTheme} userTheme={userTheme} />
         </div>

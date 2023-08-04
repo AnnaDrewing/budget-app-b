@@ -12,6 +12,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import { simpleLight } from "./home/Themes";
+import Log from "./Log.jsx";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
@@ -19,6 +20,12 @@ function App() {
   const [userFont, setUserFont] = useState("Roboto");
   const [userCurrency, setUserCurency] = useState("€");
   const [userTheme, setUserTheme] = useState(simpleLight);
+
+  // For logging purposes
+  const [fontFamilyClicks, setFontFamilyClicks] = useState(0);
+  const [fontSizeClicks, setFontSizeClicks] = useState(0);
+  const [themeClicks, setThemeClicks] = useState(0);
+  const [startTime, setStartTime] = useState(new Date());
 
   const addExpense = (date, category, price, currency, label) => {
     setExpenseList((oldExpenseList) => [
@@ -46,6 +53,17 @@ function App() {
     setUserTheme(theme);
   };
 
+  // For logging purposes
+  const updateFontFamilyClicks = (numOfClicks) => {
+    setFontFamilyClicks(numOfClicks);
+  };
+  const updateFontSizeClicks = (numOfClicks) => {
+    setFontSizeClicks(numOfClicks);
+  };
+  const updateThemeClicks = (numOfClicks) => {
+    setThemeClicks(numOfClicks);
+  };
+
   return (
     <ThemeProvider theme={userTheme}>
       <CssBaseline enableColorScheme />
@@ -67,6 +85,9 @@ function App() {
             userCurrency={userCurrency}
             updateTheme={updateTheme}
             userTheme={userTheme}
+            updateFontFamilyClicks={updateFontFamilyClicks}
+            updateFontSizeClicks={updateFontSizeClicks}
+            updateThemeClicks={updateThemeClicks}
           />
           <BrowserRouter basename={"/budget-app-b/"}>
             <Routes>
@@ -109,6 +130,12 @@ function App() {
             </Routes>
           </BrowserRouter>
         </Box>
+        <Log
+          fontFamilyClicks={fontFamilyClicks}
+          fontSizeClicks={fontSizeClicks}
+          themeClicks={themeClicks}
+          startTime={startTime}
+        />
       </LocalizationProvider>
     </ThemeProvider>
   );
