@@ -7,6 +7,7 @@ export default function Log({
   startTime,
 }) {
   var log = {
+    version: "B",
     fontFamilyClicks: fontFamilyClicks,
     fontSizeClicks: fontSizeClicks,
     themeClicks: themeClicks,
@@ -29,7 +30,7 @@ export default function Log({
     const blob = new Blob([fileData], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.download = "log.json";
+    link.download = "log_b.json";
     link.href = url;
     link.click();
   };
